@@ -25,8 +25,9 @@ automicinteger的实现原理？
 线程和进程的区别？
 java创建一个线程的几种方式？（Thread、Runnable、Callable、ExecutorService线程池）
 悲观锁、乐观锁、自旋锁？
-独占锁、共享锁？
+独占锁、共享锁？读写锁？
 偏向锁、轻量级锁、重量级锁？
+公平锁/非公平锁？
 介绍下volatile与synchronized关键字的作用？
 tomcat的实现原理？
 序列化和反序列化？（protostuff可以减小对象序列化后的大小）
