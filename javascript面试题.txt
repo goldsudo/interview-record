@@ -1,0 +1,8 @@
+javascript中的浅拷贝与深拷贝？
+javascript的闭包是什么？
+javascript的作用域、作用域链、执行环境、上下文这些概念的区别与联系？
+javascript的原型链？
+javascript中有几种遍历数组的方法？
+javascript中如何删除数组中指定下标的元素？
+javascript是单线程的吗？
+javascript如何实现异步（比如setTimeout）？

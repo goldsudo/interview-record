@@ -1,0 +1,12 @@
+mysql的事务隔离级别？
+mysql的索引实现原理？hash，二叉搜索树，b树，b+树的区别？
+什么时候应该使用索引？
+什么场景会导致索引无效?
+mysql中如何利用sql进行分页查询？
+oracle中如何利用sql进行分页查询？
+会写mysql存储过程吗？
+oracle中的over partition by（分析聚合函数）会用吗?
+join、left join、right join的区别？
+介绍下数据库分库与分表？
+表分区了解吗？
+有没有sql优化的经验？有哪些sql优化的技巧？

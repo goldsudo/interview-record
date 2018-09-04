@@ -1,0 +1,4 @@
+mybatis的优缺点？
+jdbc与mybatis的区别？
+mybatis如何实现表间关联查询？
+mybatis如何实现分页？

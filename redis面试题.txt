@@ -1,0 +1,12 @@
+redis中有多少种数据结构？
+redis是单线程的吗？
+为什么redis很快？
+redis的RDB与AOF两种持久化机制的区别？
+如何利用redis实现分布式锁？
+如何利用redis实现客户端恶意脚本批量请求的防攻击检测？
+如何利用一致性hash实现redis集群？
+如何用redis实现消息队列？
+redis缓存击穿怎么办？
+redis与memcached的区别？
+redis从哪个版本开始支持集群？
+redis集群怎么部署？

@@ -1,0 +1,8 @@
+servlet与springmvc有什么区别？
+springboot与springmvc的比较大的区别，从使用者的角度来说？
+springmvc中，要删除一个cookie，要用什么方式来操作？
+日常springmvc或springboot项目开发中，有采取过什么样子的方法来防止引起的安全问题？举个例子？
+spring的事务隔离级别?
+spring的ioc初始化过程？
+spring的ioc与aop的实现原理？
+spring cloud了解吗？
