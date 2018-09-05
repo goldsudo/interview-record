@@ -10,3 +10,56 @@ join、left join、right join的区别？
 介绍下数据库分库与分表？
 表分区了解吗？
 有没有sql优化的经验？有哪些sql优化的技巧？
+
+mysql的事务隔离级别？
+答：
+	read-uncommited 读未提交
+	read-commited 读已提交
+	repeatable-read 可重复读
+	serializable 串行化
+
+mysql的索引实现原理？
+答：
+	b+树
+	可以延申地去聊hash、二叉搜索树、b树的相关知识
+
+mysql中如何利用sql进行分页查询？
+答：
+	使用offset和limit
+
+会写mysql存储过程吗？
+答：
+	利用特定的语法比如定义变量、判断、循环等将多个sql组织起来实现复杂的业务逻辑
+
+oracle中的over partition by（分析聚合函数）会用吗?
+答：
+	可以用分析聚合函数来方便的求解每个班的前三名这种问题
+
+join、left join、right join的区别？
+答：
+	join只返回左右两表中都存在的数据行
+	left join返回左表的所有数据行，无论是否存在于右表
+	right join返回右表的所有数据行，无论是否存在与左表
+
+介绍下数据库分库与分表？
+答：
+	可以对某个特别庞大的业务表进行分表。
+	例如，一张上亿的用户表，可以利用用户的所在省份进行表拆分，
+	拆出来的每个子表只保存一个具体身份的用户数据，该子表的结构与用户主表一致。
+	然后采用一个路由表，进行路由，路由表中保存每个省份对于的子表表名，查询时需要依赖这个路由表进行。
+	分库则是数据库变得庞大之后，一个机器装不下了，于是需要进行分布式的存储。
+	mysql和oracle目前都支持主从表分布式存储模式，不过引入分布式就以为着要面对CAP问题，即一致性、可用性、分区性这三者间的取舍。
+
+Oracle如何使用sql分页？
+答：
+	SELECT * FROM  
+	(  
+	SELECT A.*, ROWNUM RN  
+	FROM (SELECT * FROM TABLE_NAME) A  
+	WHERE ROWNUM <= 40  
+	)  
+	WHERE RN >= 21 
+
+oracle表分区了解吗？
+
+有没有sql优化的经验？有哪些sql优化的技巧？
