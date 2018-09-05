@@ -6,3 +6,61 @@ spring的事务隔离级别?
 spring的ioc初始化过程？
 spring的ioc与aop的实现原理？
 spring cloud了解吗？
+
+servlet与springmvc有什么区别？
+答：
+	直接用servlet的代码量会比使用springmvc的多很多。
+	也需要在web.xml中配置很多ervlet-mapping。
+	而springmvc使用一个公共的servlet，dispatchservlet接管所有url映射，使用spring的IOC以及注解扫描的能力，将url映射到对应的controller上。
+	springmvc也提供了很强大url参数解析功能，只需要在注解中配置一下就可以使用。
+
+springboot与springmvc的比较大的区别，从使用者的角度来说？
+答：
+	springboot整合了spring和springmvc，比起springmvc来减少了很多配置，并且不必再单独安装tomcat这些容器服务器了，springboot的项目用maven打成jar包后，直接跑起来就是一个网站，但是核心的业务开发并没有与springmvc有区别。
+	spring是引擎
+	springmvc是基于spring的一个mvc框架
+	springboot是基于spring4的一套快速开发整合包
+
+springmvc中，要删除一个cookie，要用什么方式来操作？
+答：
+	首先通过request拿到Cookies列表，遍历列表后找到要删除的cookie。
+	执行cookie.setValue(null);
+		cookie.setMaxage(0);
+		cookie.setPath("/");
+		response.addCookie(cookie);
+	即可删除
+
+日常springmvc或springboot项目开发中，有采取过什么样子的方法来防止引起的安全问题？举个例子？
+答：
+	避免CSRF跨站请求攻击，解决方法是首先判断http中header中的referer字段，查看是否来自可信的网站。
+	然后是在生成表单时附带一个随机数到客户端，客户端提交表单时也将这个随机数提交到服务端校验，如果为空或者不正确则代表该请求是伪造的。
+
+spring的事务隔离级别?
+答：
+	分5种
+		1.default--默认采用数据库的事务隔离级别（而mysql默认是可重复度）
+		2.read--uncommited读未提交（无法解决脏读、不可重复读、幻读的问题）
+		3.read--commited读已提交（解决脏读，无法解决不可重复读，幻读的问题）
+		4.repetable--read可重复读（解决脏读，不可重复读，无法解决幻读问题）
+		5.serializable串行化（解决脏读、不可重复读、幻读问题，但大大牺牲了性能）
+
+spring的ioc初始化过程？
+答：
+	定位：通过spring的配置文件或者java注解，定位所有bean类的存放位置
+	载入：将bean类加载到jvm，每个bean类对应一个BeanDefinition
+	注册：将BeanDefinition注册到一个hashmap中，即IOC容器，IOC通过这个hashmap来维护所有bean，此时bean不一定被初始化，因为可以配置init-lazy属性来控制是否懒加载
+
+spring的ioc与aop的实现原理？
+答：
+	ioc利用了类加载器和反射的原理获取所有的bean对象，然后用一个hashmap作为容器存放这些bean对象，之后用户的使用spring提供的依赖注入DI能力其实就是在围绕这个hashmap容器做文章。
+	aop则利用了aspectj的动态代理能力，代理原有的类，增加切面的逻辑。
+	实现动态代理的方法还有invokehandler与cglib。
+	invokehandler有个缺点就是被代理的类一定要实现某个接口。
+	cglib则要求被代理的类和方法不是final类型的，因为cglib的原理使用动态字节码生成的技术生成一个被代理类的子类来替代被代理的类。
+
+spring cloud了解吗？
+答：
+    spring Cloud是一个基于Spring Boot实现的云应用开发工具。
+    它为基于JVM的云应用开发中的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的开发方式。
+    spring boot 的优点是可以快速启动，快速构建应用程序，而不需要太多的配置文件。
+    spring cloud 是分布式开发的解决方案，基于spring boot,在spring boot做较少的配置，便可成为 spring cloud 中的一个微服务。
