@@ -2,3 +2,32 @@ mybatis的优缺点？
 jdbc与mybatis的区别？
 mybatis如何实现表间关联查询？
 mybatis如何实现分页？
+
+mybatis的优缺点？
+答：
+	优点：
+		减少了大量代码量
+		sql与代码分离，降低耦合，便于维护管理
+		支持动态sql
+		支持bean对象到数据库表的映射
+	缺点	：
+		要求开发人员有sql功底
+		sql的编写依赖于具体的数据库，数据库移植性差
+
+jdbc与mybatis的区别？
+	直接使用jdbc的工作量大，过程复杂，比如要先注册驱动和数据库，创建Connection，创建Statement执行sql，遍历resultSet读取数据转换为pojo，最后还要记得关闭数据连接。
+	因为jdbc实在不好用，因此出现了ORM对象映射关系对jdbc进行封装。
+	mybatis就是一种ORM框架，对jdbc进行良好的封装，使用SqlSessionFactoryBuilder来完成数据库的连接，将sql编写至xml文件中，使用自动映射的功能将sql的执行结果封装到对应的pojo中去，这一切都是在解耦和降低工作量。
+	并且使用Mybatis可以使得编码风格统一，提升了项目的可维护性。
+
+mybatis如何实现表间关联查询？
+答：
+	在mapper.xml文件里使用association作为一对一的关联，
+	使用collection作为一对多的关联。
+	使用resultmap配置这两个属性，然后写一个表关联的sql搞定，这种情况需要指定字段名和bean属性名的对应关系。
+	或者写两个sql搞定，在上文的两个属性中配置一个子sql，使用子sql的结果作为表关联的结果。
+
+mybatis如何实现分页？
+答：
+	直接写sql，比如mysql中使用offset和limit实现分页。
+	使用pagenitor和pagehelper这两个mybatis插件实现分页。
