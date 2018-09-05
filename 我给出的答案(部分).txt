@@ -756,8 +756,13 @@ redis与memcached的区别？
 	memcached可以使用多核，因此在存储小数据上时redis快，但是存储100k以上的大数据时memcached性能高。
 	
 redis从哪个版本开始支持集群？
+答：
+    3.0版本推出了redis的cluster功能
 
 redis集群怎么部署？
+答：
+    可以使用redis3.0以上版本提供的cluster模式
+    也可以自行部署多个redis实例，然后通过一致性hash进行负载均衡
 
 8.web安全：
 防止sql注入的方法是什么？
