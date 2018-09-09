@@ -60,7 +60,7 @@ java8有哪些新特性?lamda与stream了解吗？
 		Selector.open()：打开一个Selector；ServerSocketChannel.open()：创建服务端的Channel；bind()：绑定到某个端口上。并配置非阻塞模式；register()：注册Channel和关注的事件到Selector上；select()轮询拿到已经就绪的事件
 
 
-io中缓冲区的作用?为什么缓冲区可以加块读取速度？
+io中缓冲区的作用?为什么缓冲区可以加快读取速度？
 答：
 	进行系统调用是耗时操作，但是无论读取多少数据，每次读取消耗的时间都几乎相等。所以读取等量的数据时，使用缓冲区可以减少系统调用的次数，从而减少调用的时间。
 	将一堆砖头搬从A点搬到B点，直接用字节流的话，就是一块一块的搬，这个过程要执行很多次，效率上会很低。
@@ -106,7 +106,8 @@ hashmap中put一万个元素应该怎么做？
 	首先应该评估一万个元素是否会OOM，不会的话再考虑如何put，否则服务器就挂了。
 	如果想要用多线程put一万个元素，要求线程安全和效率兼顾的话不应使用hashmap或hashtable，而要用concurrenthashmap。
 	然后是重点，由于hashmap存在resize操作，resize操作是很消耗资源的，为了避免在put一万个元素的过程中不进行resize，需要将hashmap的初始容量设置为比10000大的最小的2的n次幂。（要求2的n次幂是因为这能够加速计算hash的过程，不过hashmap内部对容量进行了控制，可以直接将容量设置为10000，然后hashmap会自动将容量计算成距离10000最近的2的n次幂）
-
+	另外，还要考虑扩容因子的取值。
+	
 hashmap、hashtable、concurrenthashmap的区别？（附加：concurrenthashmap的实现原理）？
 答：
 	（1）区别
