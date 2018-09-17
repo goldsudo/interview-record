@@ -6,3 +6,21 @@ vue双向绑定的实现原理？
 vue的子路由嵌套？
 vue的如何watch一个对象中的属性值的变动？
 vue如何使得数组中的某一个对象的属性值变更时触发双向绑定？
+
+vue可以用来做什么？
+vue双向绑定的实现原理？
+答：
+	之前写的博客：
+	http://goldsudo.com/develop/javascript/vue是如何实现双向绑定的
+了解vue的virtual dom吗？
+介绍下vue的生命周期？
+介绍下vue-router？
+vue的子路由嵌套？
+vue的如何watch一个对象中的属性值的变动？
+答:
+	watch : {
+		"obj.key":function(old,new){
+			//do something...
+		}
+	}
+vue如何使得数组中的某一个对象的属性值变更时触发双向绑定？

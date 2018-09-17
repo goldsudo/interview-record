@@ -107,13 +107,13 @@ hashmap中put一万个元素应该怎么做？
 	如果想要用多线程put一万个元素，要求线程安全和效率兼顾的话不应使用hashmap或hashtable，而要用concurrenthashmap。
 	然后是重点，由于hashmap存在resize操作，resize操作是很消耗资源的，为了避免在put一万个元素的过程中不进行resize，需要将hashmap的初始容量设置为比10000大的最小的2的n次幂。（要求2的n次幂是因为这能够加速计算hash的过程，不过hashmap内部对容量进行了控制，可以直接将容量设置为10000，然后hashmap会自动将容量计算成距离10000最近的2的n次幂）
 	另外，还要考虑扩容因子的取值。
-	
+
 hashmap、hashtable、concurrenthashmap的区别？（附加：concurrenthashmap的实现原理）？
 答：
 	（1）区别
 	hashtable是hashmap的线程安全版，在会引起线程安全问题的操作上都增加了synchronized关键字，不过这样也牺牲了性能，在并发环境下很低效。
 	因为当一个线程访问HashTable的同步方法时，其他线程访问HashTable的同步方法时，可能会进入阻塞或轮询状态。如线程1使用put进行添加元素，线程2不但不能使用put方法添加元素，并且也不能使用get方法来获取元素，所以竞争越激烈效率越低。
-	concurrenthashmap也是hashmao的线程安全版，与hashtable的区别是concurrenthashmap在保证线程安全的同时很好的兼顾了性能。
+	concurrenthashmap也是hashmap的线程安全版，与hashtable的区别是concurrenthashmap在保证线程安全的同时很好的兼顾了性能。
 	（2）concurrenthashmap原理：
 	concurrenthashmap使用一个数组存放2的N次方个segement，而segement的结构其实和hashmap一样，因此concurrenthashmap相当于一个二级哈希表，其内保存着若干个子哈希表。
 	与hashtable不同，并发环境下concurrenthashmap仅需要锁住部分的segement，而不需要锁住所有数据。
@@ -225,7 +225,8 @@ jvm是如何实现一次编译到处运行的?
 java内存模型？（注意与jvm内存结构不是一回事）
 答：
 	每个线程有自己的工作内存（映射到物理设备上就是高速缓存）
-	线程工作时，首先从主内存中读取数据到自己的工作内存中，执行完运算后将数据写入自己的工作内存中，而不是直接与主内存交互。也因此线程中的数据同步到主内存是需要一定的时间的，这会造成线程安全问题。
+	线程工作时，首先从主内存中读取数据到自己的工作内存中，执行完运算后将数据写入自己的工作内存中，而不是直接与主内存交互。
+	也因此线程中的数据同步到主内存是需要一定的时间的，这会造成线程安全问题。
 
 十个线程同时++i会出现什么问题？为什么？如何解决?
 答：
